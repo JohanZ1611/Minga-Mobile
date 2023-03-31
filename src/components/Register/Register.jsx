@@ -1,8 +1,9 @@
-import { Text, View,StyleSheet,StatusBar } from 'react-native'
-import React from 'react'
+import { Text, View,StyleSheet,StatusBar, Dimensions } from 'react-native'
+import React, { useState } from 'react'
 import { useFonts } from 'expo-font';
 import FormSignin from '../FormSignin/FormSignin';
 import FormRegister from '../FormRegister/FormRegister';
+import { color } from 'react-native-reanimated';
  
 export default function Register() {
     const [fontsLoaded] = useFonts({
@@ -12,6 +13,9 @@ export default function Register() {
         SemiBold: require('../../../assets/fonts/Poppins-SemiBold.ttf')
     })
     if(!fontsLoaded)return null
+
+    // const [texto,isTexto]=useState(false)
+
   return (
     <View style={styles.contain}>
         <View style={styles.contain_title}>
@@ -19,20 +23,22 @@ export default function Register() {
             <Text style={styles.text_1}>Discover manga, manhua and manhwa, track your progress, have fun, read manga.</Text>
         </View>
 
-        <FormRegister/>
+        {/* <FormRegister/> */}
+        <FormSignin/>
 
         <View style={styles.contain_foot}>
-            <Text style={styles.text_2}>Already have an account? Log in</Text>
-            <Text style={styles.text_3}>Go back to home page</Text>
+            <Text style={styles.text_2}>Already have an account? <Text style={styles.log}>Log in</Text></Text>
+            <Text style={styles.text_3}>Go back to <Text style={styles.log}>home page</Text></Text>
         </View>
         <StatusBar style='auto'/>
     </View>
   )
 }
-
+const altura = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     contain:{
         flex:1,
+        height:altura,
         display:'flex',
         flexDirection:'column',
         alignItems:'center',
@@ -76,6 +82,13 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontStyle:'normal',
         textAlign:'center'
+    },
+    log:{
+        fontFamily:'Bold',
+        fontSize:14,
+        fontStyle:'normal',
+        textAlign:'center',
+        color:'#F472B6'
     }
 
 })

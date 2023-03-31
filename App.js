@@ -12,8 +12,8 @@ export default function App() {
       <NavigationContainer>
         {/* <MenuNavigation/> */}
         {/* <Hero/> */}
-        <Register/>
-        {/* <Index/> */}
+        {/* <Register/> */}
+        <Index/>
       </NavigationContainer>
     </Provider>  
   );

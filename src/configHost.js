@@ -1,3 +1,4 @@
-let apiUrl = 'http://localhost:8080/api/'
+let apiUrl = 'https://minga-red.onrender.com/api/'
+// 'http://localhost:8080/api/'
 
 export default apiUrl

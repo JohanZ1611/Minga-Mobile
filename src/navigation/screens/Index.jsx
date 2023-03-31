@@ -3,12 +3,15 @@ import React from 'react'
 import Hero from '../../components/Hero/Hero'
 import Register from '../../components/Register/Register'
 
+
 export default function Index() {
   return (
     <ScrollView>
-            <Hero/>
-            <Register/>
-    </ScrollView>
+    <View >
+      <Hero/>
+      <Register/>
+    </View>
+  </ScrollView>
   )
 }
 
