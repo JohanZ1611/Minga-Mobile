@@ -20,7 +20,7 @@ export default function FormRegister() {
     Regular: require('../../../assets/fonts/Poppins-Regular.ttf'),
     Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
   })
-  if(!fontsLoaded)return null
+  
 
   const handlePress = async() => {
     
@@ -51,6 +51,7 @@ export default function FormRegister() {
     }
   }
   
+  if(!fontsLoaded)return null
 return (
     <View style={styles.contain}>
         

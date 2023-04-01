@@ -19,7 +19,7 @@ export default function FormSignin() {
     Regular: require('../../../assets/fonts/Poppins-Regular.ttf'),
     Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
   })
-  if(!fontsLoaded)return null
+  
 
   const handlePress = async() => {
     
@@ -60,7 +60,8 @@ export default function FormSignin() {
       // toast.success('La acción se ha completado exitosamente!');
     }
   }
-
+  
+  if(!fontsLoaded)return null
   return (
     <View style={styles.contain}>
         
