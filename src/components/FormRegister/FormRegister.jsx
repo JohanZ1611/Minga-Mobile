@@ -1,12 +1,78 @@
+<<<<<<< HEAD
+import {  View,StyleSheet,StatusBar,TouchableOpacity,Text,Image,TouchableHighlight } from 'react-native'
+import React,{useState} from 'react'
+import { useFonts } from 'expo-font';
+// import { toast, Toaster } from 'react-hot-toast';
+import axios from 'axios';
+import apiUrl from '../../configHost';
+import InputForm from '../InputForm/InputForm';
+
+
+export default function FormRegister() {
+
+  const [name,setName] = useState('')
+  const [mail,setMail] = useState('')
+  const [photo,setPhoto] = useState('')
+  const [pass,setPass] = useState('')
+  
+
+=======
 import {  View,StyleSheet,StatusBar,TextInput,TouchableOpacity,Text,Image,TouchableHighlight } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font';
 
 export default function FormRegister() {
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
   const [fontsLoaded] = useFonts({
     Bold: require('../../../assets/fonts/Poppins-Bold.ttf'),
     Regular: require('../../../assets/fonts/Poppins-Regular.ttf'),
     Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
+<<<<<<< HEAD
+  })
+  if(!fontsLoaded)return null
+
+  const handlePress = async() => {
+    
+
+    if (name.length > 0) {
+      console.log('name',name)
+      console.log('mail',mail)
+      console.log('photo',photo)
+      console.log('pass',pass)
+      const data = {
+        name:name,
+        mail:mail,
+        photo:photo,
+        password:pass
+      }
+      let url = apiUrl + 'auth/signup'
+      // let url = 'https://minga-red.onrender.com/api/auth/signup'
+      try{
+        await axios.post(url,data)
+        console.log('usuario creado con exito');
+
+      }catch(err){
+        console.log(err);
+      }
+    } else {
+      console.log('completa todos los campos');
+      // toast.success('La acción se ha completado exitosamente!');
+    }
+  }
+  
+return (
+    <View style={styles.contain}>
+        
+        <View style={styles.contain_inputs}>
+          <InputForm value={setName} imagen={'profile.png'}  board={'default'} capitalize={'words'} autoComplet={'name'} type={'givenName'} holder={'Name'}/>
+          <InputForm value={setMail} imagen={'@.png'}  board={'email-address'} capitalize={'none'} autoComplet={'email'} type={'emailAddress'} holder={'Example@gmail.com'}/>
+          <InputForm value={setPhoto} imagen={'camera.png'}  board={'url'} capitalize={'none'} autoComplet={'url'} type={'URL'} required={true} holder={'URL Photo'}/>
+          <InputForm value={setPass} imagen={'lock1.png'} secure={true} board={'default'} capitalize={'none'} autoComplet={'password'} type={'password'} holder={'Password'}/>
+        </View>
+        <View style={styles.contain_btn}>
+          <View style={styles.shadowProp}>
+            <TouchableHighlight style={styles.btn_signin} onPress={handlePress} >
+=======
 })
 if(!fontsLoaded)return null
   return (
@@ -21,6 +87,7 @@ if(!fontsLoaded)return null
         <View style={styles.contain_btn}>
           <View style={styles.shadowProp}>
             <TouchableHighlight style={styles.btn_signin}>
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
               <Text style={styles.text_sign}>Sign up</Text>
             </TouchableHighlight>
           </View>
@@ -33,6 +100,12 @@ if(!fontsLoaded)return null
 
 
         <StatusBar style='auto'/>
+<<<<<<< HEAD
+
+        
+
+=======
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
     </View>
   )
 }
@@ -58,6 +131,8 @@ const styles = StyleSheet.create({
     alignItems:'center',
     gap:20
   },
+<<<<<<< HEAD
+=======
   input_text:{
     width:'100%',
     height:40,
@@ -66,6 +141,7 @@ const styles = StyleSheet.create({
     borderWidth: 1, 
     borderRadius: 10, 
   },
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
   btn_signin:{
     width:'100%',
     height:40,
@@ -110,6 +186,9 @@ const styles = StyleSheet.create({
     fontFamily:'Bold'
   }
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
 })
