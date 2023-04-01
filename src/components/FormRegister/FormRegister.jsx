@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {  View,StyleSheet,StatusBar,TouchableOpacity,Text,Image,TouchableHighlight } from 'react-native'
 import React,{useState} from 'react'
 import { useFonts } from 'expo-font';
@@ -15,10 +16,18 @@ export default function FormRegister() {
   const [pass,setPass] = useState('')
   
 
+=======
+import {  View,StyleSheet,StatusBar,TextInput,TouchableOpacity,Text,Image,TouchableHighlight } from 'react-native'
+import React from 'react'
+import { useFonts } from 'expo-font';
+
+export default function FormRegister() {
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
   const [fontsLoaded] = useFonts({
     Bold: require('../../../assets/fonts/Poppins-Bold.ttf'),
     Regular: require('../../../assets/fonts/Poppins-Regular.ttf'),
     Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
+<<<<<<< HEAD
   })
   if(!fontsLoaded)return null
 
@@ -63,6 +72,22 @@ return (
         <View style={styles.contain_btn}>
           <View style={styles.shadowProp}>
             <TouchableHighlight style={styles.btn_signin} onPress={handlePress} >
+=======
+})
+if(!fontsLoaded)return null
+  return (
+    <View style={styles.contain}>
+        
+        <View style={styles.contain_inputs}>
+          <TextInput style={styles.input_text}></TextInput>
+          <TextInput style={styles.input_text}></TextInput>
+          <TextInput style={styles.input_text}></TextInput>
+          <TextInput style={styles.input_text}></TextInput>
+        </View>
+        <View style={styles.contain_btn}>
+          <View style={styles.shadowProp}>
+            <TouchableHighlight style={styles.btn_signin}>
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
               <Text style={styles.text_sign}>Sign up</Text>
             </TouchableHighlight>
           </View>
@@ -75,9 +100,12 @@ return (
 
 
         <StatusBar style='auto'/>
+<<<<<<< HEAD
 
         
 
+=======
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
     </View>
   )
 }
@@ -103,6 +131,17 @@ const styles = StyleSheet.create({
     alignItems:'center',
     gap:20
   },
+<<<<<<< HEAD
+=======
+  input_text:{
+    width:'100%',
+    height:40,
+    backgroundColor:'#FAFCFC', 
+    borderColor: 'rgba(31, 31, 31, 0.5)', 
+    borderWidth: 1, 
+    borderRadius: 10, 
+  },
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
   btn_signin:{
     width:'100%',
     height:40,
@@ -147,4 +186,9 @@ const styles = StyleSheet.create({
     fontFamily:'Bold'
   }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
 })

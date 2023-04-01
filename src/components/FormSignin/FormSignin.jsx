@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Text, View,StyleSheet,TouchableOpacity,Image,TouchableHighlight,StatusBar } from 'react-native'
 import React,{useState} from 'react'
 import { useFonts } from 'expo-font'
@@ -156,3 +157,16 @@ const styles = StyleSheet.create({
   }
 
 })
+=======
+import { Text, View } from 'react-native'
+import React from 'react'
+
+
+export default function FormSignin() {
+  return (
+    <View>
+        <Text>Signin</Text>
+    </View>
+  )
+}
+>>>>>>> 7523c8b5ed27a9a1737df7b6a011145a3caaa1d8
