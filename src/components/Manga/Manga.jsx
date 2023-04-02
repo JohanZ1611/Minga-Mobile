@@ -45,10 +45,13 @@ export default function Manga() {
         }, [])
     );
 
-    useEffect(() => {
-        let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-        dispatch(read_mangas({ inputText: defaultText, inputCheck: defaultChecks, inputPage: page,headers }));
-    }, [page, defaultText, defaultChecks, reload]);
+    useFocusEffect(
+      useCallback(() => {
+          let headers = { headers: { 'Authorization': `Bearer ${token}` } };
+          dispatch(read_mangas({ inputText: defaultText, inputCheck: defaultChecks, inputPage: page, headers }));
+          
+      }, [page, defaultText, defaultChecks,reload])
+    );
 
 
     function handleChange(text) {
