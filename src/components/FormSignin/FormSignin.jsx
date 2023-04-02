@@ -39,8 +39,8 @@ export default function FormSignin() {
         await axios.post(url,data)
         .then(
           res => {
-            console.log(res.data.user);
-            console.log(res.data.token);
+            // console.log(res.data.user);
+            // console.log(res.data.token);
             AsyncStorage.setItem('token',res.data.token)
             AsyncStorage.setItem('user',JSON.stringify({
               name:res.data.user.name,
@@ -82,10 +82,7 @@ export default function FormSignin() {
           </TouchableOpacity>
         </View>
 
-
         <StatusBar style='auto'/>
-
-        
 
     </View>
   )

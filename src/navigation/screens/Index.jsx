@@ -12,7 +12,7 @@ export default function Index() {
     scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
   })
   return (
-    <ScrollView ref={scrollViewRef}>
+    <ScrollView ref={scrollViewRef} >
       <View >
         <Hero/>
         <Register/>
