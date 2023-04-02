@@ -78,7 +78,7 @@ export default function MenuNavigation() {
     >
       <Menu.Screen name='Home' component={Index}/>
       {token? null :<Menu.Screen name='Register' component={Register}/>}
-      {token? null :<Menu.Screen name='Login' component={Login}/>}
+      {token? null :<Menu.Screen name='Login' component={Login}/>}   
       {token? <Menu.Screen name='Mangas' component={Mangas} />: null}
       {token? <Menu.Screen name='Logout' component={Logout} options={{title: 'Logout'}} />: null}
 
