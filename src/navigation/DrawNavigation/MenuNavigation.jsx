@@ -9,9 +9,9 @@ import axios from 'axios';
 import Logout from '../../navigation/screens/Logout';
 import Index from '../screens/Index';
 import Login from '../screens/Login';
-import Mangas from '../screens/Mangas'
+import Mangas from '../screens/Mangas';
 import Register from '../../components/Register/Register';
-
+import MangaDetails from '../screens/MangaDetails';
 
 const Menu = createDrawerNavigator()
 
@@ -79,10 +79,9 @@ export default function MenuNavigation() {
       <Menu.Screen name='Home' component={Index}/>
       {token? null :<Menu.Screen name='Register' component={Register}/>}
       {token? null :<Menu.Screen name='Login' component={Login}/>}   
-      <Menu.Screen name='Mangas' component={Mangas} />
+      {token?<Menu.Screen name='Mangas' component={Mangas} />:null}
       {token? <Menu.Screen name='Logout' component={Logout} options={{title: 'Logout'}} />: null}
-      
-
+      <Menu.Screen name='MangaDetails' component={MangaDetails} />
     </Menu.Navigator>
   );
 }
