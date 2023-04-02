@@ -1,22 +1,9 @@
 import { Text, View, StyleSheet } from 'react-native'
 import React from 'react'
-
+import Register from '../../components/Register/Register'
 
 export default function Login() {
   return (
-    <View style={style.contain}>
-        <Text>Login</Text>
-    </View>
+    <Register login={true}/>
   )
 }
-
-const style = StyleSheet.create({
-    contain:{
-        width:'100%',
-        height:'100%',
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center'
-    },
-    
-})

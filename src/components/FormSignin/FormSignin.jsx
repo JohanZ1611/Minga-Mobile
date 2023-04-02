@@ -19,7 +19,7 @@ export default function FormSignin() {
     Regular: require('../../../assets/fonts/Poppins-Regular.ttf'),
     Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
   })
-  if(!fontsLoaded)return null
+  
 
   const handlePress = async() => {
     
@@ -39,8 +39,8 @@ export default function FormSignin() {
         await axios.post(url,data)
         .then(
           res => {
-            console.log(res.data.user);
-            console.log(res.data.token);
+            // console.log(res.data.user);
+            // console.log(res.data.token);
             AsyncStorage.setItem('token',res.data.token)
             AsyncStorage.setItem('user',JSON.stringify({
               name:res.data.user.name,
@@ -60,7 +60,8 @@ export default function FormSignin() {
       // toast.success('La acción se ha completado exitosamente!');
     }
   }
-
+  
+  if(!fontsLoaded)return null
   return (
     <View style={styles.contain}>
         
@@ -81,10 +82,7 @@ export default function FormSignin() {
           </TouchableOpacity>
         </View>
 
-
         <StatusBar style='auto'/>
-
-        
 
     </View>
   )
