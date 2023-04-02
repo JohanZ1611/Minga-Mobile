@@ -43,8 +43,9 @@ export default function CustomDrawerContain({navigation,handleLogout}) {
     {title:'Home',route:'Home'},
     {title:'Register',route:'Register'},
     {title:'Login',route:'Login'},
-    {tittle:'Mangas',route:'Mangas'},
+    {title:'Mangas',route:'Mangas'},
     {title:'Logout',route:'Logout'},
+    
   ]
 
   if (token) {
@@ -52,7 +53,7 @@ export default function CustomDrawerContain({navigation,handleLogout}) {
   }
 
   if(!token){
-    listArray = listArray.filter((item) => item.title !== 'Logout'  && item.title !== 'Mangas');
+    listArray = listArray.filter((item) => item.title !== 'Logout' && item.title !== 'Mangas');
   }
 
   const [selectedId, setSelectedId] = useState();

@@ -5,12 +5,11 @@ import apiUrl from "../../configHost";
 
 const read_mangas = createAsyncThunk(
     'read_mangas',
-    async ({ inputText, inputCheck, inputPage }) => {
-        let token = localStorage.getItem('token')
-        let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+    async ({ inputText, inputCheck, inputPage ,headers}) => {
+        
         let url = apiUrl + `mangas?page=${inputPage}&title=${inputText.trim()}&category_id=${inputCheck.join()}`
         try {
-            let response = await axios.get(url, headers)
+            let response = await axios.get(url, headers) 
             return {
                 mangas: response.data.mangas
             }

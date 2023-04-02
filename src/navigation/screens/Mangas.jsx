@@ -1,11 +1,12 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
+import Manga from '../../components/Manga/Manga'
 
 export default function Mangas() {
   return (
-    <View>
-        <Text>Mangas</Text>
-      </View>
+    <ScrollView>
+      <Manga/>
+    </ScrollView>
   )
 }
 
