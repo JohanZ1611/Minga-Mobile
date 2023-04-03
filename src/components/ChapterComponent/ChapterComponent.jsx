@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity,StyleSheet } from 'react-native';
 import icon_comment from '../../img/icon_comment.png';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 
 export default function ChapterComponent(props) {
@@ -12,6 +12,7 @@ export default function ChapterComponent(props) {
         SemiBold: require('../../../assets/fonts/Poppins-SemiBold.ttf')
     })
 
+    const {id} = useRoute().params
 
     const chapter = { ...props };
     const comments = Math.floor(Math.random() * 200);
@@ -19,7 +20,7 @@ export default function ChapterComponent(props) {
     const navigation = useNavigation();
 
     function handleNavigate() {
-        navigation.navigate(`Chapters`, { id: chapter._id});
+        navigation.navigate(`Chapters`, { id: chapter._id, pag:0 ,mangaId:id});
     }
     if(!fontsLoaded)return null
     return (
