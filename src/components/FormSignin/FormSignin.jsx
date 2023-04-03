@@ -1,6 +1,7 @@
-import { Text, View,StyleSheet,TouchableOpacity,Image,TouchableHighlight,StatusBar } from 'react-native'
+import { Text, View,StyleSheet,TouchableOpacity,Image,TouchableHighlight,StatusBar,ToastAndroid } from 'react-native'
 import React,{useState} from 'react'
 import { useFonts } from 'expo-font'
+import { useNavigation } from '@react-navigation/core'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
 import apiUrl from '../../configHost'
@@ -20,6 +21,7 @@ export default function FormSignin() {
     Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
   })
   
+  const navigate = useNavigation()
 
   const handlePress = async() => {
     
@@ -31,7 +33,7 @@ export default function FormSignin() {
         password:pass
       }
       console.log(data);
-      // let url = apiUrl + 'auth/signin'
+      
       let url = apiUrl + 'auth/signin'
       console.log(url);
       try{
@@ -39,8 +41,7 @@ export default function FormSignin() {
         await axios.post(url,data)
         .then(
           res => {
-            // console.log(res.data.user);
-            // console.log(res.data.token);
+            
             AsyncStorage.setItem('token',res.data.token)
             AsyncStorage.setItem('user',JSON.stringify({
               name:res.data.user.name,
@@ -49,15 +50,18 @@ export default function FormSignin() {
             }))
             
         })
-
+        ToastAndroid.show('Successful session start !', ToastAndroid.LONG);
+        navigate.reset({
+          index: 0,
+          routes: [{ name: 'Home' }],
+        });
       }catch(err){
-        console.log(err);
-        // console.log(err.response.data);
+        ToastAndroid.show('wrong credentials!', ToastAndroid.LONG);
+        ToastAndroid.show("You haven't verified yourself, check your email", ToastAndroid.LONG);
       }
 
     } else {
-      console.log('completa todos los campos');
-      // toast.success('La acción se ha completado exitosamente!');
+      ToastAndroid.show('Complete all fields', ToastAndroid.LONG);
     }
   }
   
