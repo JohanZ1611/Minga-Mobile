@@ -20,7 +20,7 @@ export default function ChapterComponent(props) {
     const navigation = useNavigation();
 
     function handleNavigate() {
-        navigation.navigate(`Chapters`, { id: chapter._id, pag:0 ,mangaId:id});
+        navigation.navigate(`Chapters`, { id: chapter._id ,mangaId:id});
     }
     if(!fontsLoaded)return null
     return (

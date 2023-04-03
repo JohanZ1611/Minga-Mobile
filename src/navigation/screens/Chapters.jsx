@@ -7,13 +7,13 @@ import apiUrl from '../../configHost.js';
 export default function Chapters() {
   const navigation = useNavigation();
   const route = useRoute();
-  const { id ,pag,mangaId} = route.params;
+  const { id,mangaId} = route.params;
   const url = apiUrl + 'chapters/';
   
   const [chapter, setChapter] = useState({});
   const [next, setNext] = useState('');
   const [prev, setPrev] = useState('');
-  const [page, setPage] = useState(pag);
+  const [page, setPage] = useState(0);
 
 
   useEffect(() => {
@@ -27,33 +27,26 @@ export default function Chapters() {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(object);
+  
 
   let handlePrev = () => {
-    // if(page === 0 && prev){
-    //   setTimeout(() => {
-    //     navigation.navigate('Chapters', { id: prev, pag: 0 });
-    //   }, 100);
-    // }else if(page === 0){
-    //     console.log(page);
-    //     setTimeout(() => {
-    //         navigation.navigate('MangaDetails',{id:mangaId});
-    //       }, 100);
-    // }
-    //  else {
-    //   setPage(page - 1);
-    // } 
+    if(page === 0){
+        setTimeout(() => {
+            navigation.navigate('MangaDetails',{id:mangaId});
+          }, 100);
+    }else {
+      setPage(page - 1);
+    } 
   };
 
   let handleNext = () => {
-    // if (page === chapter.pages.length - 1) {
-    //   setTimeout(() => {
-    //     navigation.navigate('Chapters', { id: next, pag: 0 });
-    //     setPage(0);
-    //   }, 100);
-    // } else {
-    //   setPage(page + 1);
-    // }
+    if (page === chapter.pages.length - 1) {
+        setTimeout(() => {
+            navigation.navigate('MangaDetails',{id:mangaId});
+          }, 100);;
+    } else {
+      setPage(page + 1);
+    }
   };
 
   
