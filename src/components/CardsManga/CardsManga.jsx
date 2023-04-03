@@ -15,11 +15,7 @@ export default function CardsManga(props) {
   const navigation = useNavigation()
 
   const handleRead = () => {
-    // props.navigation.navigate(`MangaDetails`, {
-    //   id: props._id,
-    //   chapter: 1,
-    // });
-    navigation.navigate('MangaDetails')
+    navigation.navigate('MangaDetails',{id:props._id})
   };
   if(!fontsLoaded)return null
   return (
