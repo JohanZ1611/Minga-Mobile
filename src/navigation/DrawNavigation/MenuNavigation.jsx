@@ -2,6 +2,7 @@ import React,{useEffect,useState, useCallback} from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerHeader from './CustomDrawerHeader';
 import CustomDrawerContain from './CustomDrawerContain';
+import { ToastAndroid } from 'react-native';
 import { useNavigation,useFocusEffect } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import apiUrl from '../../configHost';
@@ -44,13 +45,13 @@ export default function MenuNavigation() {
         photo: ''
       }));
 
-      console.log('cerrado sesion');
+      ToastAndroid.show('The session was closed successfully! !', ToastAndroid.LONG);
       navigate.reset({
         index: 0,
         routes: [{ name: 'Home' }],
       });
     } catch (err) {
-      console.log(err);
+      ToastAndroid.show("You're already signed out or not signed in", ToastAndroid.LONG);
     }
   }
 

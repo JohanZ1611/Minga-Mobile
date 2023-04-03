@@ -90,7 +90,7 @@ export default function CustomDrawerContain({navigation,handleLogout}) {
   return (
     <View style={{flex:1}}>
       <View style={{flex:0.15,paddingHorizontal:25,display:'flex',flexDirection:'row',alignItems:'center',gap:10}}>
-        {token?<Image source={{ url: user?.photo || '' }} style={{height:65,width:65,borderRadius:50}}/>:<Image source={require('../../img/photoProfile.png')} style={{height:65,width:65,borderRadius:50}}/>}
+        {token?<Image source={{ uri: user?.photo || 'https://i.postimg.cc/fyJsspq8/image.png' }} style={{height:65,width:65,borderRadius:50}}/>:<Image source={require('../../img/photoProfile.png')} style={{height:65,width:65,borderRadius:50}}/>}
         <View  style={{flex:1,display:'flex',flexDirection:'column',gap:5}}>
           {token?<Text style={{fontFamily:'SemiBold',fontSize:16,color:'white'}}>{user?.name || '' }</Text>:<Text style={{fontFamily:'SemiBold',fontSize:16,color:'white'}}>User Name</Text>}
           {token?<Text style={{fontFamily:'Medium',fontSize:12,color:'white'}}>{user?.mail || '' }</Text>:<Text style={{fontFamily:'Medium',fontSize:12,color:'white'}}>UserEmail@gmail.com</Text>}

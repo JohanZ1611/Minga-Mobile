@@ -1,7 +1,7 @@
-import {  View,StyleSheet,StatusBar,TouchableOpacity,Text,Image,TouchableHighlight } from 'react-native'
+import {  View,StyleSheet,StatusBar,TouchableOpacity,Text,Image,TouchableHighlight,ToastAndroid } from 'react-native'
 import React,{useState} from 'react'
 import { useFonts } from 'expo-font';
-// import { toast, Toaster } from 'react-hot-toast';
+import { useNavigation } from '@react-navigation/core';
 import axios from 'axios';
 import apiUrl from '../../configHost';
 import InputForm from '../InputForm/InputForm';
@@ -21,34 +21,44 @@ export default function FormRegister() {
     Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
   })
   
+  const navigate = useNavigation()
 
-  const handlePress = async() => {
-    
-
-    if (name.length > 0) {
-      console.log('name',name)
-      console.log('mail',mail)
-      console.log('photo',photo)
-      console.log('pass',pass)
-      const data = {
-        name:name,
-        mail:mail,
-        photo:photo,
-        password:pass
+  const handlePress = async () => {
+    try {
+      if (name.length > 0 && mail.length > 0 && photo.length > 0 && pass.length > 0) {
+        const data = {
+          name: name,
+          mail: mail,
+          photo: photo,
+          password: pass,
+        };
+        let url = apiUrl + 'auth/signup';
+        await axios.post(url, data);
+        ToastAndroid.show('User Successfully Created', ToastAndroid.SHORT);
+        ToastAndroid.show('We have sent you a verification email', ToastAndroid.LONG);
+        clearForm();
+        navigate.reset({
+          index: 0,
+          routes: [{ name: 'Home' }],
+        });
+      } else {
+        ToastAndroid.show('Complete all fields', ToastAndroid.LONG);
       }
-      let url = apiUrl + 'auth/signup'
-      // let url = 'https://minga-red.onrender.com/api/auth/signup'
-      try{
-        await axios.post(url,data)
-        console.log('usuario creado con exito');
-
-      }catch(err){
-        console.log(err);
+    } catch (error) {
+      if(typeof error.response.data.message === 'string'){
+        ToastAndroid.show(error.response.data.message, ToastAndroid.LONG);
+      }else{
+          error.response.data.message.forEach(err => ToastAndroid.show(err, ToastAndroid.LONG))
       }
-    } else {
-      console.log('completa todos los campos');
-      // toast.success('La acción se ha completado exitosamente!');
     }
+  };
+
+
+  const clearForm = () => {
+    setName('');
+    setMail('');
+    setPhoto('');
+    setPass('');
   }
   
   if(!fontsLoaded)return null
@@ -76,8 +86,6 @@ return (
 
 
         <StatusBar style='auto'/>
-
-        
 
     </View>
   )

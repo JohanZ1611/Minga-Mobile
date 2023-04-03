@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useState,useCallback} from 'react'
 import { View,Text,TouchableOpacity,StyleSheet,ImageBackground,StatusBar, Dimensions} from 'react-native'
 import { useFonts } from 'expo-font';
-
+import { ToastAndroid } from 'react-native';
+import { useNavigation,useFocusEffect } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Hero() {
     const [fontsLoaded] = useFonts({
@@ -9,21 +11,40 @@ export default function Hero() {
         Regular: require('../../../assets/fonts/Poppins-Regular.ttf'),
         Medium: require('../../../assets/fonts/Poppins-Medium.ttf')
     })
-    if(!fontsLoaded)return null
-    function handleHola(){
-      console.log('hola');
+    const [token, setToken] = useState(null);
+    const navigation = useNavigation()
+    useFocusEffect(
+        useCallback(() => {
+          const getTokenAndUser = async () => {
+            const storedToken = await AsyncStorage.getItem('token');
+            setToken(storedToken);
+          };
+          getTokenAndUser();
+        }, [])
+    );
+
+    function handleManga(){
+      if(token){
+        navigation.navigate('Mangas')
+      }else{
+        ToastAndroid.show('Sign up or log in !', ToastAndroid.LONG);
+      }
     }
+
+    if(!fontsLoaded)return null
+    
   return (
     <View style={styles.container}>
         <ImageBackground source={require('../../img/img-hero.png')} resizeMode="cover" style={styles.image}>
           <Text style={styles.text}>Live the emotion of the manga</Text>
           <Text style={styles.text2}>Find the perfect manga for you</Text>
-          <TouchableOpacity style={styles.btn_hero} onPress={handleHola}>
+          <TouchableOpacity style={styles.btn_hero} onPress={handleManga}>
                 <Text style={styles.btn_text}>Explore</Text>
           </TouchableOpacity>
           
         </ImageBackground>
         <StatusBar style='auto'/>
+       
     </View>
   )
 }
